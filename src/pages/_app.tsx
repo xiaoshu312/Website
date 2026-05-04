@@ -16,7 +16,6 @@ i18n;
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => (
   <>
-    <script defer type="text/javascript" src="/2026.js" />
     <script
       async
       type="text/javascript"
