@@ -7,11 +7,13 @@ import frFR from "src/i18n/fr-FR.json";
 import zhCN from "src/i18n/zh-CN.json";
 import zhTW from "src/i18n/zh-TW.json";
 
+export const supportedLanguages = ["en-US", "zh-CN", "zh-TW", "fr-FR"];
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: ["en-US", "zh-CN", "zh-TW", "fr-FR"],
+    fallbackLng: supportedLanguages,
     debug: false,
     interpolation: {
       escapeValue: false,
