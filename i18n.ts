@@ -5,11 +5,13 @@ import { initReactI18next } from "react-i18next";
 import enUS from "src/i18n/en-US.json";
 import frFR from "src/i18n/fr-FR.json";
 
+export const supportedLanguages = ["en-US", "fr-FR"];
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: ["en-US", "fr-FR"],
+    fallbackLng: supportedLanguages,
     debug: false,
     interpolation: {
       escapeValue: false,

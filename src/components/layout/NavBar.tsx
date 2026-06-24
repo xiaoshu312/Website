@@ -15,7 +15,7 @@ import NavDropDown from "@/components/layout/NavDropDown";
 import NavDropDownLink from "@/components/layout/NavDropDownLink";
 import NavLink from "@/components/layout/NavLink";
 import type { PageSoftwareProps } from "@/lib/util/types";
-import i18n from "i18n";
+import i18n, { supportedLanguages } from "i18n";
 
 export interface NavBarProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -90,31 +90,7 @@ const NavBar = ({ component }: NavBarProps) => {
           </NavLink>
           <div className="md:hidden" />
           <NavDropDown label={t("Language")} className="md:hidden">
-            {Array.from(i18n.languages)
-              .filter((language) => language !== "en")
-              .filter((language) => language !== "fr")
-              .filter((language) => language !== "zh")
-              .map((language) => (
-                <NavDropDownLink
-                  href=""
-                  key={language}
-                  onClick={() => {
-                    i18n.changeLanguage(language);
-                  }}
-                >
-                  {i18n.getFixedT(language)("name")}
-                </NavDropDownLink>
-              ))}
-          </NavDropDown>
-        </div>
-
-        <div className="flex-grow" />
-        <NavDropDown label={t("Language")} className="invisible md:visible">
-          {Array.from(i18n.languages)
-            .filter((language) => language !== "en")
-            .filter((language) => language !== "fr")
-            .filter((language) => language !== "zh")
-            .map((language) => (
+            {supportedLanguages.map((language) => (
               <NavDropDownLink
                 href=""
                 key={language}
@@ -125,6 +101,22 @@ const NavBar = ({ component }: NavBarProps) => {
                 {i18n.getFixedT(language)("name")}
               </NavDropDownLink>
             ))}
+          </NavDropDown>
+        </div>
+
+        <div className="flex-grow" />
+        <NavDropDown label={t("Language")} className="invisible md:visible">
+          {supportedLanguages.map((language) => (
+            <NavDropDownLink
+              href=""
+              key={language}
+              onClick={() => {
+                i18n.changeLanguage(language);
+              }}
+            >
+              {i18n.getFixedT(language)("name")}
+            </NavDropDownLink>
+          ))}
         </NavDropDown>
         <IconButton
           icon={DiscordIcon}
